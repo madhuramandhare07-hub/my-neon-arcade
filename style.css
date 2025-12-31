@@ -1,0 +1,73 @@
+<style>
+    :root {
+        --bg-pastel: #fdfcfb;
+        --shape-1: rgba(255, 182, 193, 0.4); /* Pink */
+        --shape-2: rgba(173, 216, 230, 0.4); /* Blue */
+        --shape-3: rgba(255, 218, 185, 0.4); /* Peach */
+        --shape-4: rgba(230, 230, 250, 0.4); /* Lavender */
+    }
+
+    body { 
+        margin: 0;
+        background-color: var(--bg-pastel);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        font-family: 'Quicksand', sans-serif;
+        color: #4a4a4a; /* Soft dark grey for readability */
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* THE ABSTRACT SHAPE LAYER */
+    .bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        filter: blur(60px); /* This creates the dreamy effect */
+    }
+
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        mix-blend-mode: multiply;
+        animation: morph 20s infinite alternate;
+    }
+
+    @keyframes morph {
+        0% { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; transform: translate(0, 0) rotate(0deg); }
+        33% { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; transform: translate(10vw, 5vh) rotate(120deg); }
+        66% { border-radius: 40% 50% 40% 60% / 60% 40% 60% 40%; transform: translate(-5vw, 15vh) rotate(240deg); }
+        100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; transform: translate(0, 0) rotate(360deg); }
+    }
+
+    /* TEXT COLOR ADJUSTMENT FOR PASTEL */
+    h1 { 
+        color: #6a6a6a; 
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.05); 
+    }
+
+    .game-card {
+        background: rgba(255, 255, 255, 0.6); /* Lighter glass */
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        color: #555;
+    }
+
+    .game-card:hover {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        color: #000;
+    }
+</style>
+
+<body>
+    <div class="bg-canvas">
+        <div class="blob" style="width: 600px; height: 600px; background: var(--shape-1); top: -10%; left: -10%; animation-duration: 25s;"></div>
+        <div class="blob" style="width: 500px; height: 500px; background: var(--shape-2); top: 20%; right: -5%; animation-duration: 30s;"></div>
+        <div class="blob" style="width: 700px; height: 700px; background: var(--shape-3); bottom: -10%; left: 20%; animation-duration: 35s;"></div>
+        <div class="blob" style="width: 450px; height: 450px; background: var(--shape-4); top: 40%; left: 40%; animation-duration: 22s;"></div>
+    </div>
